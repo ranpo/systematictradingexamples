@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 import scipy.stats as st
+import datetime as dt
+
 DAYS_IN_YEAR=256.0
 ROOT_DAYS_IN_YEAR=DAYS_IN_YEAR**.5
 
@@ -87,7 +89,7 @@ def ewmac_forecast_scalar(Lfast, Lslow):
     if lkey in fsdict:
         return fsdict[lkey]
     else:
-        print "Warning: No scalar defined for Lfast=%d, Lslow=%d, using default of 1.0" % (Lfast, Lslow)
+        print ("Warning: No scalar defined for Lfast={Lfast}, Lslow={Lslow}, using default of 1.0") 
         return 1.0
 
 def get_price_for_instrument(code):
@@ -150,7 +152,7 @@ def sharpe(total_rets):
     
     return sharpe
 
-def stack_ts(tslist, start_date=pd.datetime(1970,1,1)):
+def stack_ts(tslist, start_date=dt.datetime(1970,1,1)):
     
     """
     Take a list of time series, and stack them, generating a new time series
@@ -295,7 +297,7 @@ def cum_perc(pd_timeseries):
     return cum_datalist.cumprod()
 
 
-def arbitrary_timeindex(Nperiods, index_start=pd.datetime(2000,1,1)):
+def arbitrary_timeindex(Nperiods, index_start=dt.datetime(2000,1,1)):
     """
     For nice plotting, convert a list of prices or returns into an arbitrary pandas time series
     """    
@@ -305,7 +307,7 @@ def arbitrary_timeindex(Nperiods, index_start=pd.datetime(2000,1,1)):
     return ans
 
 
-def arbitrary_timeseries(datalist, index_start=pd.datetime(2000,1,1)):
+def arbitrary_timeseries(datalist, index_start=dt.datetime(2000,1,1)):
     """
     For nice plotting, convert a list of prices or returns into an arbitrary pandas time series
     """    
