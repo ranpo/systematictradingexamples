@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 from common import DAYS_IN_YEAR, ROOT_DAYS_IN_YEAR, arbitrary_timeindex
 import scipy.signal as sg
+import datetime as dt
 
 def generate_siney_trends(Nlength, Tlength , Xamplitude):
     """
@@ -85,7 +86,7 @@ def generate_noise(Nlength, stdev):
 
 
 
-def threeassetportfolio(plength=5000, SRlist=[1.0, 1.0, 1.0], annual_vol=.15, clist=[.0,.0,.0], index_start=pd.datetime(2000,1,1)):
+def threeassetportfolio(plength=5000, SRlist=[1.0, 1.0, 1.0], annual_vol=.15, clist=[.0,.0,.0], index_start=dt.datetime(2000,1,1)):
 
     (c1, c2, c3)=clist
     dindex=arbitrary_timeindex(plength, index_start)
