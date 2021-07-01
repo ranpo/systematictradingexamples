@@ -3,6 +3,7 @@ import numpy as np
 import scipy.stats as st
 import datetime as dt
 
+
 DAYS_IN_YEAR=256.0
 ROOT_DAYS_IN_YEAR=DAYS_IN_YEAR**.5
 
@@ -291,7 +292,7 @@ def cum_perc(pd_timeseries):
     """
     
     cum_datalist=[1+x for x in pd_timeseries]
-    cum_datalist=pd.TimeSeries(cum_datalist, index=pd_timeseries.index)
+    cum_datalist=pd.Series(cum_datalist, index=pd_timeseries.index)
     
     
     return cum_datalist.cumprod()
@@ -312,7 +313,7 @@ def arbitrary_timeseries(datalist, index_start=dt.datetime(2000,1,1)):
     For nice plotting, convert a list of prices or returns into an arbitrary pandas time series
     """    
     
-    ans=pd.TimeSeries(datalist, index=arbitrary_timeindex(len(datalist), index_start))
+    ans=pd.Series(datalist, index=arbitrary_timeindex(len(datalist), index_start))
     
     return ans
 
